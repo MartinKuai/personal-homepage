@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./config/credentials.json)",
+      "Bash(rm -rf *)",
+      "Bash(curl *)"
+    ],
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(git log --oneline -5)",
+      "Bash(npm run build)",
+      "Bash(npm run lint)",
+      "Bash(npm run test)"
+    ]
+  }
+}

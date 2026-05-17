@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone:*)",
+      "Bash(ls:*)",
+      "Bash(for:*)",
+      "Bash(do echo:*)",
+      "Bash(if [ -f \".claude/skills/$d/SKILL.md\" ])",
+      "Bash(then echo \"SKILL.md OK\")",
+      "Bash(else:*)",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(if:*)",
+      "Bash(then:*)",
+      "Bash(test:*)",
+      "Bash(echo:*)",
+      "Bash(npm create:*)",
+      "Bash(set:*)",
+      "Bash(npm install)",
+      "Bash(npm config set:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(NODE_PATH=\"\" npm run build:*)",
+      "Bash(npm run dev)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ninit personal homepage v0\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}

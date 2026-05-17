@@ -1,0 +1,28 @@
+---
+import { timeline } from '../data/timeline';
+---
+
+<section id="timeline" class="section-container">
+  <div class="max-w-2xl">
+    <p class="section-title">Timeline</p>
+    <h2 class="section-heading">成长轨迹</h2>
+  </div>
+  <div class="mt-16 max-w-2xl">
+    <div class="space-y-0">
+      {timeline.map((item, index) => (
+        <div class="relative flex gap-6 pb-12 last:pb-0">
+          <div class="flex flex-col items-center">
+            <div class="h-2 w-2 rounded-full bg-white/40"></div>
+            {index < timeline.length - 1 && (
+              <div class="mt-2 h-full w-px bg-white/10"></div>
+            )}
+          </div>
+          <div class="flex-1">
+            <h3 class="text-sm font-medium">{item.phase}</h3>
+            <p class="mt-2 text-sm text-muted">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

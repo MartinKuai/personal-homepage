@@ -1,0 +1,25 @@
+# Temporary clone/cache directory (used during workflow setup only)
+.tmp/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Secrets
+secrets/
+config/credentials.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Astro
+dist/
+.astro/

@@ -1,0 +1,28 @@
+---
+import { profile } from '../data/profile';
+---
+
+<section id="writing" class="section-container">
+  <div class="max-w-2xl">
+    <p class="section-title">Writing & Notes</p>
+    <h2 class="section-heading">思考与写作</h2>
+    <p class="mt-4 text-sm text-muted">
+      记录关于 AI 工具、职业转型、个人系统和方法论的思考。
+    </p>
+  </div>
+  <div class="mt-16">
+    <div class="space-y-1">
+      {profile.writing.map((topic) => (
+        <div class="group flex items-center justify-between border-b border-white/5 py-4 transition-colors hover:border-white/10">
+          <div>
+            <h3 class="text-sm font-medium">{topic.title}</h3>
+            <p class="mt-1 text-xs text-muted">{topic.description}</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
