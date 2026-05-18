@@ -4,40 +4,50 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackHomeLink from '../../components/BackHomeLink.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('writing');
-  return posts
-    .filter((post) => post.data.status === 'published' && post.slug !== 'placeholder')
-    .map((post) => ({
-      params: { slug: post.slug },
-      props: { post },
+  const projects = await getCollection('projects');
+  return projects
+    .filter((project) => !project.data.draft && !project.data.placeholder)
+    .map((project) => ({
+      params: { slug: project.slug },
+      props: { project },
     }));
 }
 
-const { post } = Astro.props;
-const { title, description, date, category } = post.data;
-const { Content } = await post.render();
-
-const formattedDate = date ? new Date(date).toLocaleDateString('zh-CN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}) : '';
+const { project } = Astro.props;
+const { title, summary, status, started, updated, role, stack, tags } = project.data;
+const { Content } = await project.render();
 ---
 
-<BaseLayout title={`${title} - Martin Kuai`} description={description}>
+<BaseLayout title={`${title} - Martin Kuai`} description={summary}>
   <section class="section-container">
     <div class="max-w-2xl">
-      <BackHomeLink href="/#writing" />
+      <BackHomeLink href="/#works" />
 
       <article>
         <header class="mb-12">
           <h1 class="text-3xl font-light tracking-tight md:text-4xl">{title}</h1>
-          <div class="mt-4 flex items-center gap-3 text-sm text-muted">
-            {formattedDate && <time>{formattedDate}</time>}
-            {formattedDate && category && <span>·</span>}
-            {category && <span>{category}</span>}
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted">
+            {status && <span>{status}</span>}
+            {started && (
+              <span>{started}{updated ? ` – ${updated}` : ''}</span>
+            )}
           </div>
-          <p class="mt-4 text-base text-muted-light">{description}</p>
+          {role && <p class="mt-3 text-sm text-muted">{role}</p>}
+          <p class="mt-4 text-base text-muted-light">{summary}</p>
+          {(stack && stack.length > 0) && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {stack.map((tech) => (
+                <span class="text-xs px-2 py-1 rounded bg-white/5 text-muted">{tech}</span>
+              ))}
+            </div>
+          )}
+          {(tags && tags.length > 0) && (
+            <div class="mt-3 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span class="text-xs text-muted">#{tag}</span>
+              ))}
+            </div>
+          )}
         </header>
 
         <div class="prose">

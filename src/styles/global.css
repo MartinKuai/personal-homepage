@@ -5,7 +5,7 @@
 @layer base {
   html {
     @apply bg-dark-900 text-white antialiased;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {

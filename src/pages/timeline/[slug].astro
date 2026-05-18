@@ -4,40 +4,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackHomeLink from '../../components/BackHomeLink.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('writing');
-  return posts
-    .filter((post) => post.data.status === 'published' && post.slug !== 'placeholder')
-    .map((post) => ({
-      params: { slug: post.slug },
-      props: { post },
+  const entries = await getCollection('timeline');
+  return entries
+    .filter((entry) => !entry.data.draft && !entry.data.placeholder)
+    .map((entry) => ({
+      params: { slug: entry.slug },
+      props: { entry },
     }));
 }
 
-const { post } = Astro.props;
-const { title, description, date, category } = post.data;
-const { Content } = await post.render();
-
-const formattedDate = date ? new Date(date).toLocaleDateString('zh-CN', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}) : '';
+const { entry } = Astro.props;
+const { title, summary, period, tags } = entry.data;
+const { Content } = await entry.render();
 ---
 
-<BaseLayout title={`${title} - Martin Kuai`} description={description}>
+<BaseLayout title={`${title} - Martin Kuai`} description={summary}>
   <section class="section-container">
     <div class="max-w-2xl">
-      <BackHomeLink href="/#writing" />
+      <BackHomeLink href="/#timeline" />
 
       <article>
         <header class="mb-12">
           <h1 class="text-3xl font-light tracking-tight md:text-4xl">{title}</h1>
-          <div class="mt-4 flex items-center gap-3 text-sm text-muted">
-            {formattedDate && <time>{formattedDate}</time>}
-            {formattedDate && category && <span>·</span>}
-            {category && <span>{category}</span>}
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted">
+            {period && <span>{period}</span>}
           </div>
-          <p class="mt-4 text-base text-muted-light">{description}</p>
+          <p class="mt-4 text-base text-muted-light">{summary}</p>
+          {(tags && tags.length > 0) && (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span class="text-xs text-muted">#{tag}</span>
+              ))}
+            </div>
+          )}
         </header>
 
         <div class="prose">

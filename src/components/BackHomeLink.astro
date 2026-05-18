@@ -1,0 +1,39 @@
+---
+interface Props {
+  href: string;
+  label?: string;
+}
+
+const { href, label = "← 返回首页" } = Astro.props;
+---
+
+<a href={href} data-back-home-link class="inline-block text-sm text-muted transition-colors hover:text-white mb-12">
+  {label}
+</a>
+
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const link = target.closest("[data-back-home-link]");
+    if (!(link instanceof HTMLAnchorElement)) return;
+
+    try {
+      const referrer = document.referrer ? new URL(document.referrer) : null;
+      const current = new URL(window.location.href);
+
+      const cameFromHome =
+        referrer &&
+        referrer.origin === current.origin &&
+        referrer.pathname === "/";
+
+      if (cameFromHome && window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    } catch {
+      // fallback: allow normal href navigation
+    }
+  });
+</script>

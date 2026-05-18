@@ -4,15 +4,25 @@ import { focusAreas } from '../data/focus';
 
 <section id="focus" class="section-container">
   <div class="max-w-2xl">
-    <p class="section-title">Focus</p>
-    <h2 class="section-heading">关注方向</h2>
+    <p class="section-title">FOCUS</p>
+    <h2 class="section-heading">Focus Areas</h2>
+    <p class="mt-4 text-sm text-muted">
+      这些方向会逐步连接到具体项目、笔记和阶段性记录。内容会随着实际整理逐步补充。
+    </p>
   </div>
-  <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {focusAreas.map((area) => (
-      <div class="card">
-        <h3 class="text-base font-medium">{area.title}</h3>
-        <p class="mt-3 text-sm leading-relaxed text-muted">{area.description}</p>
-      </div>
-    ))}
+  <div class="mt-12 max-w-2xl">
+    <div class="space-y-0">
+      {focusAreas.map((area) => (
+        <a href={area.href} class="group flex items-start justify-between border-b border-white/5 py-5 transition-colors hover:border-white/10">
+          <div>
+            <h3 class="text-sm font-medium transition-colors group-hover:text-white">{area.title}</h3>
+            <p class="mt-1.5 text-sm text-muted">{area.description}</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white mt-0.5 ml-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      ))}
+    </div>
   </div>
 </section>

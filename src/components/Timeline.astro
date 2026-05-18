@@ -1,27 +1,40 @@
 ---
-import { timeline } from '../data/timeline';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('timeline');
+const sortedEntries = entries
+  .filter((entry) => !entry.data.draft && !entry.data.placeholder)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section id="timeline" class="section-container">
   <div class="max-w-2xl">
-    <p class="section-title">Timeline</p>
-    <h2 class="section-heading">成长轨迹</h2>
+    <p class="section-title">TIMELINE</p>
+    <h2 class="section-heading">Timeline</h2>
   </div>
   <div class="mt-16 max-w-2xl">
     <div class="space-y-0">
-      {timeline.map((item, index) => (
-        <div class="relative flex gap-6 pb-12 last:pb-0">
+      {sortedEntries.map((entry, index) => (
+        <a href={`/timeline/${entry.slug}/`} class="relative flex gap-6 pb-12 last:pb-0 group block">
           <div class="flex flex-col items-center">
-            <div class="h-2 w-2 rounded-full bg-white/40"></div>
-            {index < timeline.length - 1 && (
+            <div class="h-2 w-2 rounded-full bg-white/40 transition-colors group-hover:bg-white/70"></div>
+            {index < sortedEntries.length - 1 && (
               <div class="mt-2 h-full w-px bg-white/10"></div>
             )}
           </div>
           <div class="flex-1">
-            <h3 class="text-sm font-medium">{item.phase}</h3>
-            <p class="mt-2 text-sm text-muted">{item.description}</p>
+            <div class="flex items-center gap-3">
+              <h3 class="text-sm font-medium transition-colors group-hover:text-white">{entry.data.title}</h3>
+              {entry.data.period && (
+                <span class="text-xs text-muted">{entry.data.period}</span>
+              )}
+            </div>
+            <p class="mt-2 text-sm text-muted">{entry.data.summary}</p>
           </div>
-        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       ))}
     </div>
   </div>
