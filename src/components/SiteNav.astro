@@ -1,0 +1,53 @@
+---
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-dark-900/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+    <a href="/#top" class="text-sm font-medium text-white transition-colors hover:text-white/80">
+      Martin Kuai
+    </a>
+    <div class="hidden items-center gap-6 text-sm text-muted md:flex">
+      <a href="/#about" class="transition-colors hover:text-white">About</a>
+      <a href="/#focus" class="transition-colors hover:text-white">Focus</a>
+      <a href="/#works" class="transition-colors hover:text-white">Works</a>
+      <a href="/#writing" class="transition-colors hover:text-white">Writing</a>
+      <a href="/#timeline" class="transition-colors hover:text-white">Timeline</a>
+      <a href="/#contact" class="transition-colors hover:text-white">Contact</a>
+    </div>
+    <div class="flex items-center gap-5 text-sm text-muted md:hidden">
+      <a href="/#works" class="transition-colors hover:text-white">Works</a>
+      <a href="/#writing" class="transition-colors hover:text-white">Writing</a>
+      <a href="/#contact" class="transition-colors hover:text-white">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="h-12"></div>
+
+<script>
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const link = target.closest("a[href^='/#']");
+    if (!(link instanceof HTMLAnchorElement)) return;
+
+    const href = link.getAttribute("href");
+    if (!href || !href.startsWith("/#")) return;
+
+    const hash = href.slice(1);
+    const targetEl = document.querySelector(hash);
+    if (!targetEl) return;
+
+    const isHome = window.location.pathname === "/" || window.location.pathname === "";
+
+    event.preventDefault();
+
+    if (isHome) {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", href);
+    } else {
+      window.location.href = href;
+    }
+  });
+</script>

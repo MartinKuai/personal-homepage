@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SiteNav from '../components/SiteNav.astro';
 
 interface Props {
   title?: string;
@@ -19,8 +20,51 @@ const { title = 'Martin Kuai', description = 'AI tools / Digital products / Pers
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script is:inline>
+      (() => {
+        const isHome =
+          window.location.pathname === "/" ||
+          window.location.pathname === "/index.html" ||
+          window.location.pathname === "/";
+
+        const hasHash = Boolean(window.location.hash);
+
+        if (isHome && hasHash) {
+          document.documentElement.classList.add("hash-entry-pending");
+          if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+          }
+        }
+      })();
+    </script>
   </head>
   <body class="bg-dark-900 text-white">
+    <SiteNav />
     <slot />
+    <script>
+      (() => {
+        if (!document.documentElement.classList.contains("hash-entry-pending")) return;
+
+        const scrollTarget = () => {
+          const hash = window.location.hash;
+          if (!hash) {
+            document.documentElement.classList.remove("hash-entry-pending");
+            return;
+          }
+
+          const target = document.querySelector(hash);
+          if (target) {
+            target.scrollIntoView({ behavior: "auto", block: "start" });
+          }
+          document.documentElement.classList.remove("hash-entry-pending");
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", scrollTarget);
+        } else {
+          scrollTarget();
+        }
+      })();
+    </script>
   </body>
 </html>

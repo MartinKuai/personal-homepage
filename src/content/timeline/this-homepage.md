@@ -26,9 +26,9 @@ placeholder: false
 - Markdown frontmatter 规范
 - draft / placeholder 过滤
 
-## 当前限制
+## 当前状态
 
-目前内容数量还比较少，结构也仍在验证中。
+目前内容数量还比较少，后续会随着实际使用逐步补充。
 
 后续会根据实际使用情况调整展示方式，避免首页变得过重。
 

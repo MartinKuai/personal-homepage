@@ -8,6 +8,14 @@
     scroll-behavior: auto;
   }
 
+  html.hash-entry-pending {
+    overflow: hidden;
+  }
+
+  html.hash-entry-pending > body {
+    visibility: hidden;
+  }
+
   body {
     @apply min-h-screen;
   }
