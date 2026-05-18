@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts
+    .filter((post) => post.data.status === 'published' && post.slug !== 'placeholder')
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { title, description, date, category } = post.data;
+const { Content } = await post.render();
+
+const formattedDate = date ? new Date(date).toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}) : '';
+---
+
+<BaseLayout title={`${title} - Martin Kuai`} description={description}>
+  <section class="section-container">
+    <div class="max-w-2xl">
+      <a href="/#writing" class="inline-block text-sm text-muted transition-colors hover:text-white mb-12">
+        ← Back to home
+      </a>
+
+      <article>
+        <header class="mb-12">
+          <h1 class="text-3xl font-light tracking-tight md:text-4xl">{title}</h1>
+          <div class="mt-4 flex items-center gap-3 text-sm text-muted">
+            {formattedDate && <time>{formattedDate}</time>}
+            {formattedDate && category && <span>·</span>}
+            {category && <span>{category}</span>}
+          </div>
+          <p class="mt-4 text-base text-muted-light">{description}</p>
+        </header>
+
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose {
+    @apply space-y-6 text-base leading-relaxed text-muted-light;
+  }
+  .prose :global(h2) {
+    @apply text-xl font-medium mt-12 mb-4 text-white;
+  }
+  .prose :global(h3) {
+    @apply text-lg font-medium mt-8 mb-3 text-white;
+  }
+  .prose :global(p) {
+    @apply text-base leading-relaxed;
+  }
+  .prose :global(ul), .prose :global(ol) {
+    @apply pl-5 space-y-2;
+  }
+  .prose :global(li) {
+    @apply text-base leading-relaxed;
+  }
+  .prose :global(code) {
+    @apply text-sm bg-white/5 px-1.5 py-0.5 rounded;
+  }
+  .prose :global(pre) {
+    @apply bg-white/5 p-4 rounded-lg overflow-x-auto my-6;
+  }
+  .prose :global(pre code) {
+    @apply bg-transparent p-0;
+  }
+  .prose :global(blockquote) {
+    @apply border-l-2 border-white/20 pl-4 italic text-muted;
+  }
+  .prose :global(a) {
+    @apply text-white underline underline-offset-2 decoration-white/30 hover:decoration-white/60 transition-colors;
+  }
+  .prose :global(hr) {
+    @apply border-white/10 my-8;
+  }
+</style>

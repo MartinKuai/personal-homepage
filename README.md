@@ -55,9 +55,22 @@ Phase 1 已建立内容资产系统：
 
 ### 添加第一篇 Writing
 
-1. 在 `src/content/writing/` 下新建 Markdown 文件
-2. 在 `docs/content/writing-ideas.md` 中记录主题
-3. 参考 `docs/templates/writing-note-template.md` 格式
+1. 在 `src/content/writing/` 下新建 Markdown 文件，使用英文 slug（如 `my-article.md`）
+2. 添加标准 frontmatter：
+
+```yaml
+---
+title: "文章标题"
+description: "一句话描述"
+date: 2026-05-18
+status: published
+category: "分类"
+---
+```
+
+3. `status: published` 的文章会显示在首页和详情页
+4. `status: draft` 或 `slug === placeholder` 的文章不会生成页面
+5. 写完后运行 `npm run build`
 
 ## Expression Style
 

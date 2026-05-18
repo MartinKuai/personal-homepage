@@ -1,5 +1,14 @@
 ---
-import { profile } from '../data/profile';
+import { getCollection } from 'astro:content';
+
+const allWriting = await getCollection('writing');
+const published = allWriting
+  .filter((entry) => entry.data.status === 'published' && entry.slug !== 'placeholder')
+  .sort((a, b) => {
+    const dateA = a.data.date ?? new Date(0);
+    const dateB = b.data.date ?? new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  });
 ---
 
 <section id="writing" class="section-container">
@@ -11,18 +20,50 @@ import { profile } from '../data/profile';
     </p>
   </div>
   <div class="mt-16">
-    <div class="space-y-1">
-      {profile.writing.map((topic) => (
+    {published.length > 0 ? (
+      <div class="space-y-1">
+        {published.map((entry) => (
+          <a href={`/writing/${entry.slug}/`} class="group flex items-center justify-between border-b border-white/5 py-4 transition-colors hover:border-white/10">
+            <div>
+              <h3 class="text-sm font-medium">{entry.data.title}</h3>
+              <p class="mt-1 text-xs text-muted">{entry.data.description}</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="space-y-1">
         <div class="group flex items-center justify-between border-b border-white/5 py-4 transition-colors hover:border-white/10">
           <div>
-            <h3 class="text-sm font-medium">{topic.title}</h3>
-            <p class="mt-1 text-xs text-muted">{topic.description}</p>
+            <h3 class="text-sm font-medium">AI 工具使用</h3>
+            <p class="mt-1 text-xs text-muted">记录 AI 工具的实际使用经验和方法论。</p>
           </div>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </div>
-      ))}
-    </div>
+        <div class="group flex items-center justify-between border-b border-white/5 py-4 transition-colors hover:border-white/10">
+          <div>
+            <h3 class="text-sm font-medium">项目复盘</h3>
+            <p class="mt-1 text-xs text-muted">每个项目的实践反思和经验总结。</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+        <div class="group flex items-center justify-between border-b border-white/5 py-4 transition-colors hover:border-white/10">
+          <div>
+            <h3 class="text-sm font-medium">个人系统</h3>
+            <p class="mt-1 text-xs text-muted">关于个人效率系统和知识管理的探索。</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted transition-colors group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </div>
+    )}
   </div>
 </section>
