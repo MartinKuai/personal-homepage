@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackHomeLink from '../../components/BackHomeLink.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,11 +17,9 @@ const { title, summary, status, started, updated, role, stack, tags } = project.
 const { Content } = await project.render();
 ---
 
-<BaseLayout title={`${title} - Martin Kuai`} description={summary}>
+<BaseLayout title={`${title} - Martin Kuai`} description={summary} backHref="/#works">
   <section class="section-container">
     <div class="max-w-2xl">
-      <BackHomeLink href="/#works" />
-
       <article>
         <header class="mb-12">
           <h1 class="text-3xl font-light tracking-tight md:text-4xl">{title}</h1>

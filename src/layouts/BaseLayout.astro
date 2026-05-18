@@ -5,9 +5,10 @@ import SiteNav from '../components/SiteNav.astro';
 interface Props {
   title?: string;
   description?: string;
+  backHref?: string;
 }
 
-const { title = 'Martin Kuai', description = 'AI tools / Digital products / Personal systems' } = Astro.props;
+const { title = 'Martin Kuai', description = 'AI tools / Digital products / Personal systems', backHref } = Astro.props;
 ---
 
 <!doctype html>
@@ -39,7 +40,7 @@ const { title = 'Martin Kuai', description = 'AI tools / Digital products / Pers
     </script>
   </head>
   <body class="bg-dark-900 text-white">
-    <SiteNav />
+    <SiteNav backHref={backHref} />
     <slot />
     <script>
       (() => {

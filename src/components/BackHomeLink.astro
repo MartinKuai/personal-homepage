@@ -2,14 +2,25 @@
 interface Props {
   href: string;
   label?: string;
+  sticky?: boolean;
 }
 
-const { href, label = "← 返回首页" } = Astro.props;
+const { href, label = "← 返回首页", sticky = false } = Astro.props;
 ---
 
-<a href={href} data-back-home-link class="inline-block text-sm text-muted transition-colors hover:text-white mb-12">
-  {label}
-</a>
+{sticky ? (
+  <div class="sticky top-12 z-40 border-b border-white/5 bg-dark-900/80 backdrop-blur-md">
+    <div class="mx-auto max-w-5xl px-6 py-2">
+      <a href={href} data-back-home-link class="inline-block text-xs text-muted transition-colors hover:text-white">
+        {label}
+      </a>
+    </div>
+  </div>
+) : (
+  <a href={href} data-back-home-link class="inline-block text-sm text-muted transition-colors hover:text-white mb-12">
+    {label}
+  </a>
+)}
 
 <script>
   document.addEventListener("click", (event) => {

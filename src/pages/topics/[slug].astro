@@ -1,7 +1,6 @@
 ---
 import { topics, getTopicBySlug } from '../../data/topics';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackHomeLink from '../../components/BackHomeLink.astro';
 
 export async function getStaticPaths() {
   return topics.map((topic) => ({
@@ -13,13 +12,11 @@ export async function getStaticPaths() {
 const { topic } = Astro.props;
 ---
 
-<BaseLayout title={`${topic.title} - Martin Kuai`} description={topic.description}>
+<BaseLayout title={`${topic.title} - Martin Kuai`} description={topic.description} backHref="/#focus">
   <section class="section-container">
     <div class="max-w-2xl">
-      <BackHomeLink href="/#focus" />
-
       <header class="mb-12">
-        <p class="text-sm font-medium tracking-widest text-muted uppercase">FOCUS</p>
+        <p class="text-sm font-medium tracking-widest text-muted uppercase">TOPICS</p>
         <h1 class="mt-4 text-3xl font-light tracking-tight md:text-4xl">{topic.title}</h1>
         <p class="mt-4 text-base text-muted-light">{topic.description}</p>
       </header>
