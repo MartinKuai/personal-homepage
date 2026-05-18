@@ -82,4 +82,10 @@ const formattedDate = date ? new Date(date).toLocaleDateString('zh-CN', {
   .prose :global(hr) {
     @apply border-white/10 my-8;
   }
+  .prose :global(img) {
+    @apply w-full rounded-lg border border-white/5 my-8;
+  }
+  .prose :global(figcaption) {
+    @apply text-xs text-muted text-center mt-2;
+  }
 </style>
