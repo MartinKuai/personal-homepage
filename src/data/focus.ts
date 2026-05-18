@@ -1,22 +1,22 @@
 export const focusAreas = [
   {
     title: 'AI Workflow',
-    description: '探索 AI 在个人工作流中的深度应用，让工具服务于思考和创造。',
+    description: '探索 AI 在个人工作流中的实际应用。',
   },
   {
     title: 'Personal Systems',
-    description: '构建个人效率系统，让知识、思考和行动形成可积累的闭环。',
+    description: '整理个人效率系统和知识管理方式。',
   },
   {
     title: 'Digital Products',
-    description: '从想法到原型，验证假设，用最小成本探索数字产品的可能性。',
+    description: '用小成本验证想法，做数字产品原型。',
   },
   {
-    title: 'Independent Creation',
-    description: '作为独立实践者，用项目、写作和工具实践自己的想法。',
+    title: 'Writing',
+    description: '记录项目过程、工具使用和阶段性思考。',
   },
   {
-    title: 'Long-term Learning',
-    description: '持续学习，持续积累，构建长期能力而非追逐短期热点。',
+    title: 'Learning',
+    description: '持续学习，逐步积累。',
   },
 ];

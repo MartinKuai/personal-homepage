@@ -1,37 +1,30 @@
 export const profile = {
   name: 'Martin Kuai',
   tagline: [
-    'Digital Nomad',
-    'Super Individual',
-    'Lifelong Learner',
+    'AI tools',
+    'Digital products',
+    'Personal systems',
   ],
-  bio: '一个探索 AI、数字产品、个人系统与长期创造的独立实践者。我用项目、写作和工具实践，持续构建自己的长期能力系统。',
-  about: `我是一个长期主义的独立实践者。过去几年，我在 ToB 业务领域积累了商业直觉与系统思维，随后将注意力转向 AI 工具、数字产品和个人系统的探索。
+  bio: '我把这里作为一个长期更新的个人主页。记录项目、笔记、方法和一些阶段性的思考。',
+  about: `我关注 AI 工具、数字产品和个人工作流，也会记录一些和学习、项目、职业变化有关的思考。
 
-我不追求短期风口，而是专注于构建能够持续积累的个人能力系统。通过项目实践、写作反思和工具搭建，我试图找到一种更自主、更可持续的工作与创造方式。
+过去的经历让我接触过 ToB 业务、客户沟通和复杂问题拆解。现在这个页面更像是一个长期整理空间，用来放作品、笔记和方法。
 
-这个主页是我的长期个人空间——记录思考、展示作品、沉淀方法论。`,
-  focus: [
-    'AI Workflow',
-    'Personal Systems',
-    'Digital Products',
-    'Independent Creation',
-    'Long-term Learning',
-  ],
+它不只服务于某一次求职，也不追求一次性讲完整个故事。内容会随着项目和阶段慢慢更新。`,
   works: [
     {
-      title: 'AI & Workflow Experiments',
-      description: '探索 AI 在个人工作流中的实际应用，从工具使用到流程自动化。',
+      title: 'Projects',
+      description: '一些正在整理或后续会公开的项目。',
       status: '占位',
     },
     {
-      title: 'Digital Product Prototypes',
-      description: '从想法到原型的数字产品实践，验证假设，快速迭代。',
+      title: 'Notes',
+      description: '关于工具、学习、工作流和项目过程的记录。',
       status: '占位',
     },
     {
-      title: 'Personal Knowledge Systems',
-      description: '构建个人知识管理系统，让思考和学习形成可积累的结构。',
+      title: 'Methods',
+      description: '一些可复用的做事方法和阶段性总结。',
       status: '占位',
     },
   ],
@@ -41,8 +34,8 @@ export const profile = {
       description: '记录 AI 工具的实际使用经验和方法论。',
     },
     {
-      title: '职业转型',
-      description: '从传统行业到独立实践者的转型思考。',
+      title: '项目复盘',
+      description: '每个项目的实践反思和经验总结。',
     },
     {
       title: '个人系统',
@@ -53,8 +46,8 @@ export const profile = {
       description: '工作方法、学习方法和创造方法的沉淀。',
     },
     {
-      title: '项目复盘',
-      description: '每个项目的实践反思和经验总结。',
+      title: '阶段性思考',
+      description: '关于职业变化和学习过程的阶段性记录。',
     },
   ],
   contact: {

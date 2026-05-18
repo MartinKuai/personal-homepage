@@ -1,18 +1,18 @@
 export const timeline = [
   {
     phase: 'ToB Business Experience',
-    description: '在 ToB 业务领域积累商业直觉与系统思维。',
+    description: '接触 ToB 业务、客户沟通和复杂问题拆解。',
   },
   {
     phase: 'AI Tools Exploration',
-    description: '深入探索 AI 工具在实际工作中的应用场景。',
+    description: '开始用 AI 工具辅助日常工作。',
   },
   {
     phase: 'Personal Projects',
-    description: '开始独立项目实践，构建个人能力系统。',
+    description: '开始做个人项目，边学边做。',
   },
   {
-    phase: 'Long-term Personal Homepage',
-    description: '搭建长期个人空间，沉淀思考与作品。',
+    phase: 'This Homepage',
+    description: '搭建一个长期整理空间。',
   },
 ];
