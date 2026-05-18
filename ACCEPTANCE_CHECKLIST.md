@@ -34,3 +34,18 @@
 - [x] .env files are denied
 - [x] secrets directory is denied
 - [x] dangerous delete command is denied
+
+## Phase 1: Content Assets
+
+- [x] docs/content/project-inventory.md exists
+- [x] docs/content/writing-ideas.md exists
+- [x] docs/content/methodology-map.md exists
+- [x] docs/content/profile-assets.md exists
+- [x] docs/content/tone-and-style-guide.md exists
+- [x] docs/templates/project-case-template.md exists
+- [x] docs/templates/writing-note-template.md exists
+- [x] docs/templates/methodology-template.md exists
+- [x] Old static demos not in homepage
+- [x] Tone is neutral, natural, restrained
+- [x] No self-promotion or exaggeration
+- [x] npm run build passes
