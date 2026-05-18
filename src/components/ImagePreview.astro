@@ -1,0 +1,129 @@
+---
+---
+
+<div class="image-preview-overlay" data-image-preview-overlay hidden>
+  <button
+    type="button"
+    class="image-preview-close"
+    aria-label="关闭图片预览"
+  >
+    ×
+  </button>
+  <img class="image-preview-img" src="" alt="" />
+</div>
+
+<script>
+  (() => {
+    const overlay = document.querySelector("[data-image-preview-overlay]");
+    if (!overlay) return;
+
+    const previewImg = overlay.querySelector(".image-preview-img") as HTMLImageElement;
+    const closeBtn = overlay.querySelector(".image-preview-close") as HTMLButtonElement;
+
+    function openPreview(src: string, alt: string) {
+      if (!previewImg) return;
+      previewImg.src = src;
+      previewImg.alt = alt;
+      overlay.removeAttribute("hidden");
+      document.body.classList.add("image-preview-open");
+    }
+
+    function closePreview() {
+      overlay.setAttribute("hidden", "");
+      document.body.classList.remove("image-preview-open");
+      if (previewImg) {
+        previewImg.src = "";
+        previewImg.alt = "";
+      }
+    }
+
+    // Click on previewable images
+    document.addEventListener("click", (event) => {
+      const target = event.target as Element;
+
+      // Check if clicked on a preview trigger
+      const trigger = target.closest("[data-preview-src]");
+      if (trigger) {
+        event.preventDefault();
+        const src = trigger.getAttribute("data-preview-src") || "";
+        const alt = trigger.getAttribute("data-preview-alt") || "";
+        openPreview(src, alt);
+        return;
+      }
+
+      // Check if clicked on overlay background
+      if (target === overlay) {
+        closePreview();
+        return;
+      }
+    });
+
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        closePreview();
+      });
+    }
+
+    // Esc key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !overlay.hasAttribute("hidden")) {
+        closePreview();
+      }
+    });
+  })();
+</script>
+
+<style>
+  .image-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  .image-preview-overlay[hidden] {
+    display: none;
+  }
+
+  .image-preview-overlay :global(.image-preview-img) {
+    max-width: min(100%, 1200px);
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .image-preview-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .image-preview-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  :global(body.image-preview-open) {
+    overflow: hidden;
+  }
+</style>

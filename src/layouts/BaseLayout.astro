@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SiteNav from '../components/SiteNav.astro';
+import ImagePreview from '../components/ImagePreview.astro';
 
 interface Props {
   title?: string;
@@ -42,6 +43,7 @@ const { title = 'Martin Kuai', description = 'AI tools / Digital products / Pers
   <body class="bg-dark-900 text-white">
     <SiteNav backHref={backHref} />
     <slot />
+    <ImagePreview />
     <script>
       (() => {
         if (!document.documentElement.classList.contains("hash-entry-pending")) return;

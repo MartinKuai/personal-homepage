@@ -27,9 +27,12 @@ category: "项目复盘"
 
 因此，这个主页的核心不是"介绍我是谁"，而是记录我正在关注什么、做过什么、如何整理问题，以及这些内容如何随着时间慢慢变化。
 
-![个人主页首页整体截图](/images/writing/personal-homepage/homepage-overview.webp)
-
-*图 1：首页整体视图，用于说明当前个人主页的主要结构。*
+<figure>
+  <button type="button" class="article-image-preview" data-preview-src="/images/writing/personal-homepage/homepage-overview.webp" data-preview-alt="个人主页首页整体视图" aria-label="预览首页整体视图大图">
+    <img src="/images/writing/personal-homepage/homepage-overview.webp" alt="个人主页首页整体视图" loading="lazy" />
+  </button>
+  <figcaption>图 1：首页整体视图，用于说明当前个人主页的主要结构。</figcaption>
+</figure>
 
 ## 这次整理解决了什么问题
 
@@ -61,9 +64,12 @@ category: "项目复盘"
 
 **Recent** 用来记录一些关键节点。它不追求完整记录所有事情，而是保留那些对方向变化、项目推进或方法形成有意义的片段。
 
-![首页信息架构示意图](/images/writing/personal-homepage/content-structure.webp)
-
-*图 2：首页内容结构示意，Notes 为核心内容入口，Topics 用于组织主题。*
+<figure>
+  <button type="button" class="article-image-preview" data-preview-src="/images/writing/personal-homepage/content-structure.webp" data-preview-alt="首页信息架构示意图" aria-label="预览首页信息架构示意大图">
+    <img src="/images/writing/personal-homepage/content-structure.webp" alt="首页信息架构示意图" loading="lazy" />
+  </button>
+  <figcaption>图 2：首页内容结构示意，Notes 为核心内容入口，Topics 用于组织主题。</figcaption>
+</figure>
 
 这些结构并不复杂，但足够支撑一个长期更新的个人主页。
 
@@ -77,9 +83,12 @@ category: "项目复盘"
 
 一个长期主页最重要的不是功能复杂，而是结构清晰、更新方便、后续不容易失控。
 
-![移动端阅读视图](/images/writing/personal-homepage/mobile-reading-view.webp)
-
-*图 3：移动端阅读场景，用于观察内容区块和正文节奏。*
+<figure>
+  <button type="button" class="article-image-preview" data-preview-src="/images/writing/personal-homepage/mobile-reading-view.webp" data-preview-alt="移动端阅读场景示意" aria-label="预览移动端阅读场景示意大图">
+    <img src="/images/writing/personal-homepage/mobile-reading-view.webp" alt="移动端阅读场景示意" loading="lazy" />
+  </button>
+  <figcaption>图 3：移动端阅读场景示意，用于观察内容区块和正文节奏。</figcaption>
+</figure>
 
 ## 后续会如何更新
 
