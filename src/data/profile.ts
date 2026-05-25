@@ -12,7 +12,9 @@ export const profile = {
 
 这个页面会随着项目和学习节奏慢慢更新，沉淀项目复盘、方法笔记、工具实践，以及一些阶段性的学习记录。`,
   contact: {
-    text: '如果你对项目合作、AI 工具、数字产品有兴趣，欢迎交流。',
+    text: '如果你对项目合作、AI 工具、数字产品或工作流实践感兴趣，欢迎交流。',
     url: 'https://github.com/MartinKuai',
+    wechat: 'Yingming_Kuai',
+    wechatNote: '添加时可备注：AI / Demo / Project',
   },
 };
