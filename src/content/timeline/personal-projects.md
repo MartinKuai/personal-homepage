@@ -1,27 +1,24 @@
 ---
-title: "个人项目实践"
-summary: "通过小项目验证想法、整理方法，并逐步形成可复用的工作流程。"
-period: "持续进行"
+title: "Topics 内容索引"
+summary: "把 Topics 从静态入口页，改成可以关联 Projects 和 Writing 的内容索引。"
+period: "2026-05"
 order: 3
 tags:
-  - 个人项目
-  - 方法整理
-  - 实践记录
+  - 个人主页
+  - Topics
+  - 内容索引
 draft: false
 placeholder: false
 ---
 
-个人项目主要用于验证想法和整理方法。
+把 Topics 从静态入口页，改成可以关联 Projects 和 Writing 的内容索引。
 
-相比一次性做出完整产品，我更关注能否通过小范围实践，把一个问题拆清楚，并留下可复用的结构、文档和验收标准。
+这次调整后，AI Tools、Digital Products、Personal Systems、Writing 和 Learning 不再只是几个入口标题，而是能看到相关项目和文章。
 
-## 记录重点
+## 当前状态
 
-- 项目开始前先明确目标和边界
-- 尽量避免一开始就过度设计
-- 用文档记录关键决策和验收标准
-- 保留失败和调整过程，而不是只展示完成结果
+Topics 页面已接入 Related Projects 和 Related Notes。
 
-## 后续整理方向
+## 后续方向
 
-后续会逐步补充更完整的项目案例，包括项目背景、目标、当前范围、技术选择、限制和下一步。
+后续补项目或文章时，同步检查 topics 关联是否准确。
