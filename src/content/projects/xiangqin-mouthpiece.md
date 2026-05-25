@@ -17,6 +17,9 @@ featured: true
 draft: false
 placeholder: false
 order: 3
+topics:
+  - ai-tools
+  - writing
 ---
 
 ## 项目背景

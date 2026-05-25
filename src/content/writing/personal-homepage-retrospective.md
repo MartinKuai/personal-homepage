@@ -5,6 +5,9 @@ date: 2026-05-18
 tags: ["Personal Site", "Writing", "Projects"]
 status: published
 category: "项目复盘"
+topics:
+  - personal-systems
+  - writing
 ---
 
 ## 为什么做这个主页

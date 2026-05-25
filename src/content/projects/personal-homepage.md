@@ -18,6 +18,9 @@ featured: true
 draft: false
 placeholder: false
 order: 4
+topics:
+  - personal-systems
+  - writing
 ---
 
 ## 为什么重新整理这个主页

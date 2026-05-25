@@ -1,5 +1,6 @@
 ---
 import { topics, getTopicBySlug } from '../../data/topics';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -10,6 +11,20 @@ export async function getStaticPaths() {
 }
 
 const { topic } = Astro.props;
+
+const allProjects = await getCollection('projects');
+const allWriting = await getCollection('writing');
+
+const relatedProjects = allProjects
+  .filter((p) => !p.data.draft && !p.data.placeholder && p.data.topics?.includes(topic.slug as any))
+  .sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const relatedWriting = allWriting
+  .filter((w) => w.data.status === 'published' && w.data.topics?.includes(topic.slug as any))
+  .sort((a, b) => {
+    if (a.data.date && b.data.date) return b.data.date.getTime() - a.data.date.getTime();
+    return 0;
+  });
 ---
 
 <BaseLayout title={`${topic.title} - Martin Kuai`} description={topic.description} backHref="/#focus">
@@ -26,6 +41,40 @@ const { topic } = Astro.props;
           <p class="text-sm text-muted leading-relaxed">{line}</p>
         ))}
       </div>
+
+      {relatedProjects.length > 0 && (
+        <div class="mt-12">
+          <h2 class="text-lg font-medium mb-6">Related Projects</h2>
+          <div class="space-y-4">
+            {relatedProjects.map((project) => (
+              <a href={`/projects/${project.slug}`} class="block border-b border-white/5 pb-4 transition-colors hover:border-white/10">
+                <h3 class="text-sm font-medium">{project.data.title}</h3>
+                <p class="mt-1 text-sm text-muted">{project.data.summary}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {relatedWriting.length > 0 && (
+        <div class="mt-12">
+          <h2 class="text-lg font-medium mb-6">Related Notes</h2>
+          <div class="space-y-4">
+            {relatedWriting.map((article) => (
+              <a href={`/writing/${article.slug}`} class="block border-b border-white/5 pb-4 transition-colors hover:border-white/10">
+                <h3 class="text-sm font-medium">{article.data.title}</h3>
+                <p class="mt-1 text-sm text-muted">{article.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {relatedProjects.length === 0 && relatedWriting.length === 0 && (
+        <div class="mt-12">
+          <p class="text-sm text-muted">这个主题下的内容还在整理中。</p>
+        </div>
+      )}
     </div>
   </section>
 </BaseLayout>

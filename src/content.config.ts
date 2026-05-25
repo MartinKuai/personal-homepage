@@ -1,5 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
+const topicEnum = z.enum(["ai-tools", "digital-products", "personal-systems", "writing", "learning"]);
+
 const writing = defineCollection({
   type: 'content',
   schema: z.object({
@@ -8,6 +10,7 @@ const writing = defineCollection({
     date: z.date().optional(),
     status: z.enum(['draft', 'published']).default('draft'),
     category: z.string().optional(),
+    topics: z.array(topicEnum).default([]),
   }),
 });
 
@@ -26,6 +29,7 @@ const projects = defineCollection({
     draft: z.boolean().default(true),
     placeholder: z.boolean().default(true),
     order: z.number().default(99),
+    topics: z.array(topicEnum).default([]),
   }),
 });
 

@@ -17,6 +17,9 @@ featured: true
 draft: false
 placeholder: false
 order: 1
+topics:
+  - ai-tools
+  - digital-products
 ---
 
 ## 项目背景
